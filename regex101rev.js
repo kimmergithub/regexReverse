@@ -1,7 +1,9 @@
 'use strict';
-    let originalDataArray = [];
-    let splitDataString = '';
-    let expressionInput = '';
+let originalDataArray = [];
+let splitDataString = '';
+let expressionInput = '';
+
+let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 // going to have to write a function that turns all the data into a string
 
@@ -41,7 +43,15 @@ let singleLineRegularExpression = () => {
         console.log(splitDataString[i] + ' is a SINGLE HYPHEN, PAREN, or +SIGN');
         console.log('\\D');
         regularExpression.push(`\\D`);
-    }  else {
+    } else if ( (alphabet.indexOf(splitDataString[i]) > -1) && ((alphabet.indexOf(splitDataString[(i + 1)]) === -1) && (alphabet.indexOf(splitDataString[(i - 1)]) === -1)) ) {
+        console.log(splitDataString[i] + ' is a SINGLE LETTER');
+        console.log('\\w');
+        regularExpression.push(`\\w`);
+      } else if ( (alphabet.indexOf(splitDataString[i]) > -1) && (alphabet.indexOf(splitDataString[(i + 1)]) > -1) && (alphabet.indexOf(splitDataString[(i - 1)]) === -1) ) {
+            console.log(splitDataString[i] + ' is a SINGLE LETTER');
+            console.log('\\w+');
+            regularExpression.push(`\\w+`);
+    } else {
      console.log(splitDataString[i] + ' NOT AN IF MATCH') ;
     }
   }
@@ -62,7 +72,6 @@ $('#expression-form').submit(function (event) {
   expressionInput = $('#expression-input').val();
   originalDataArray = [];
   originalDataArray.push(expressionInput);
-
   enterData(expressionInput);
   splitData();
   singleLineRegularExpression();
