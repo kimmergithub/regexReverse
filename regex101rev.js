@@ -1,52 +1,22 @@
 'use strict';
-
-let originDataArray = [];
-let splitDataString = '';
-let expressionInput = '';
+    let originalDataArray = [];
+    let splitDataString = '';
+    let expressionInput = '';
 
 // going to have to write a function that turns all the data into a string
+
 let enterData = data => {
   console.log('enterData function !!!!!!!FIRE!!!!!!!');
-  originDataArray.push(data);
-  console.log('originDataArray.push !!!!!!!!PASS!!!!!!');
+  originalDataArray.push(data);
+  console.log('originalDataArray.push !!!!!!!!PASS!!!!!!');
 };
-
-console.log('Values entered into enterData MUST BE A STRING!!!!');
-enterData('+80+ () 8 20-2 01 37');
-
-console.log(' ');
-console.log(originDataArray);
-console.log('The Data has been accepted as a string');
-console.log(' ');
 
 let splitData = () => {
   console.log('splitData function !!!!!!!FIRE!!!!!!!');
 
-  splitDataString = originDataArray[0].split('');
+  splitDataString = originalDataArray[0].split('');
   console.log('splitData phase !!!!!!!!PASS!!!!!!');
 };
-
-splitData();
-console.log(' ');
-
-console.log('We have succesfully SPLIT all the entered data!');
-console.log(splitDataString);
-console.log(' ');
-console.log('Time to iterate over the ARRAY');
-console.log(' ');
-
-// let checkDigit = () => {
-//   console.log('checkDigit is !!!!!FIRE!!!!!!');
-//   for (var i = 0; i < splitDataString.length; i++) {
-//     if (splitDataString[i] === '0' || splitDataString[i] === '1' || splitDataString[i] === '2' || splitDataString[i] === '3' || splitDataString[i] === '4' || splitDataString[i] === '5' || splitDataString[i] === '6' || splitDataString[i] === '7' || splitDataString[i] === '8' || splitDataString[i] === '9') {
-//       console.log(splitDataString[i] + ' is a DIGIT!!!');
-
-//     } else {
-//     console.log(splitDataString[i] + ' is NOT a digit') ;
-//     }
-//   }
-//   console.log('checkDigit is !!!!!PASS!!!!!!');
-// };
 
 let singleLineRegularExpression = () => {
   var regularExpression = [];
@@ -83,17 +53,17 @@ let singleLineRegularExpression = () => {
 
 };
 
-$(document).ready(function (){
-  $('#expression-form').submit(function (event) {
-    event.preventDefault();
-    console.log('handler was clicked!');
-    console.log($('#expression-input').val());
-    expressionInput = $('#expression-input').val();
-  })
-});
+// This flicks the DOMINOS... STARTS EVERYTHING FALLING OFF
 
-singleLineRegularExpression();
+$('#expression-form').submit(function (event) {
+  event.preventDefault();
+  console.log('SUBMISSION!!!! ' + $('#expression-input').val());
+  console.log('Variables CREATED');
+  expressionInput = $('#expression-input').val();
+  originalDataArray = [];
+  originalDataArray.push(expressionInput);
 
-
-// SAVE THIS FOR WHEN YOU HAVE i DOWN
-// && (splitDataString[(i + 1)] === '0' || splitDataString[(i + 1)] === '1' || splitDataString[(i + 1)] === '2' || splitDataString[(i + 1)] === '3' || splitDataString[(i + 1)] === '4' || splitDataString[(i + 1)] === '5' || splitDataString[(i + 1)] === '6' || splitDataString[(i + 1)] === '7' || splitDataString[(i + 1)] === '8' || splitDataString[(i + 1)] === '9')
+  enterData(expressionInput);
+  splitData();
+  singleLineRegularExpression();
+})
