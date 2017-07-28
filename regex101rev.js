@@ -2,6 +2,7 @@
 
 let originDataArray = [];
 let splitDataString = '';
+let expressionInput = '';
 
 // going to have to write a function that turns all the data into a string
 let enterData = data => {
@@ -10,8 +11,8 @@ let enterData = data => {
   console.log('originDataArray.push !!!!!!!!PASS!!!!!!');
 };
 
-console.log('Values entered into enterData MUST BE A STRING!!!!')
-enterData('5 64 239 239 - + 3');
+console.log('Values entered into enterData MUST BE A STRING!!!!');
+enterData('+80+ () 8 20-2 01 37');
 
 console.log(' ');
 console.log(originDataArray);
@@ -82,8 +83,17 @@ let singleLineRegularExpression = () => {
 
 };
 
+$(document).ready(function (){
+  $('#expression-form').submit(function (event) {
+    event.preventDefault();
+    console.log('handler was clicked!');
+    console.log($('#expression-input').val());
+    expressionInput = $('#expression-input').val();
+  })
+});
 
 singleLineRegularExpression();
+
 
 // SAVE THIS FOR WHEN YOU HAVE i DOWN
 // && (splitDataString[(i + 1)] === '0' || splitDataString[(i + 1)] === '1' || splitDataString[(i + 1)] === '2' || splitDataString[(i + 1)] === '3' || splitDataString[(i + 1)] === '4' || splitDataString[(i + 1)] === '5' || splitDataString[(i + 1)] === '6' || splitDataString[(i + 1)] === '7' || splitDataString[(i + 1)] === '8' || splitDataString[(i + 1)] === '9')
