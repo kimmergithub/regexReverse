@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>RegexREVERSE</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1><span> _RegEx REVERSE_</span></h1>
+      </header>
+      <p>Enter in one line of applicable
+        <br>data you'd like to validate.</p>
+      <p>Then click Reverse Expression to get
+      <br>the Regular Expression Output</p>
+        <fieldset>
+          <form id="expression-form" action="index.html" method="post">
+            <label for="expression-label">
+              <p>VALID CHARACTERS:</p>
+              <p>a-z, 0-9, -, (), +, ( a space )</p>
+              Enter Your Expression
+              <input id="expression-input" type="text" name="expression" placeholder="Enter Expression">
+            </label>
+            <button type="submit" name="submit">Reverse Expression</button>
+          </form>
+        </fieldset>
+        <p><span>Your regular expression:</span><p id="regular-expression-output"></p><p>
+    </main>
+    <footer>
+      <div class="video-background">
+        <video loop muted autoplay class="fullscreen__video">
+            <source src="img/Fractal.mp4" type="video/mp4">
+        </video>
+      </div>
+    </footer>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="regex101rev.js"></script>
+  </body>
+</html>
