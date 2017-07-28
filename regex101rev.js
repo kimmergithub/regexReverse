@@ -2,6 +2,7 @@
 let originalDataArray = [];
 let splitDataString = '';
 let expressionInput = '';
+let regularExpressionOutput = [];
 
 let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
@@ -21,52 +22,56 @@ let splitData = () => {
 };
 
 let singleLineRegularExpression = () => {
-  var regularExpression = [];
+  regularExpressionOutput = [];
   console.log('singleLineRegularExpression() is !!!!!FIRE!!!!!!');
   console.log(' ');
   for (var i = 0; i < splitDataString.length; i++) {
     if ( (!isNaN(parseInt(splitDataString[i]))) && (isNaN(parseInt(splitDataString[(i + 1)]))) && ((!splitDataString[(i - 1)]) || (isNaN(parseInt(splitDataString[(i - 1)])))) ) {
       console.log(splitDataString[i] + ' is a single DIGIT!!!');
       console.log(`\\d`);
-      regularExpression.push(`\\d`);
+      regularExpressionOutput.push(`\\d`);
     } else if ( (!isNaN(parseInt(splitDataString[i])) && (!isNaN(parseInt(splitDataString[(i + 1)])))) && (isNaN(parseInt(splitDataString[(i - 1)]))) ) {
       console.log(splitDataString[i] + ' is a DIGIT next to DIGITS!!!');
       console.log(`\\d+`);
-      regularExpression.push(`\\d+`);
+      regularExpressionOutput.push(`\\d+`);
     } else if ( !isNaN(parseInt(splitDataString[i])) && (isNaN(parseInt(splitDataString[(i + 1)]))) ) {
         console.log(splitDataString[i] + ' is the LAST NUMBER is block');
     } else if ( (splitDataString[i] === ' ') ) {
         console.log(splitDataString[i] + ' is a SPACE');
         console.log('\\s');
-        regularExpression.push(`\\s`);
+        regularExpressionOutput.push(`\\s`);
     } else if ( ((splitDataString[i] === ('-') ) || (splitDataString[i] === '(') || (splitDataString[i] === ')') || (splitDataString[i] === '+')) ) {
         console.log(splitDataString[i] + ' is a SINGLE HYPHEN, PAREN, or +SIGN');
         console.log('\\D');
-        regularExpression.push(`\\D`);
+        regularExpressionOutput.push(`\\D`);
     } else if ( (alphabet.indexOf(splitDataString[i]) > -1) && ((alphabet.indexOf(splitDataString[(i + 1)]) === -1) && (alphabet.indexOf(splitDataString[(i - 1)]) === -1)) ) {
         console.log(splitDataString[i] + ' is a SINGLE LETTER');
         console.log('\\w');
-        regularExpression.push(`\\w`);
+        regularExpressionOutput.push(`\\w`);
       } else if ( (alphabet.indexOf(splitDataString[i]) > -1) && (alphabet.indexOf(splitDataString[(i + 1)]) > -1) && (alphabet.indexOf(splitDataString[(i - 1)]) === -1) ) {
             console.log(splitDataString[i] + ' is a SINGLE LETTER');
             console.log('\\w+');
-            regularExpression.push(`\\w+`);
+            regularExpressionOutput.push(`\\w+`);
     } else {
      console.log(splitDataString[i] + ' NOT AN IF MATCH') ;
     }
   }
-
+  regularExpressionOutput = regularExpressionOutput.join('');
   console.log(' ');
   console.log('singleLineRegularExpression() is !!!!!PASS!!!!!!');
   console.log(' ');
-  console.log('REGULAR EXPRESSION = ' + regularExpression.join(''));
+  console.log('REGULAR EXPRESSION = ' + regularExpressionOutput);
 
 };
 
-// This flicks the DOMINOS... STARTS EVERYTHING FALLING OFF
+let appendRegularExpression = () => {
+  $('#regular-expression-output').html(regularExpressionOutput)
+}
 
+// This flicks the DOMINOS... STARTS EVERYTHING FALLING OFF
 $('#expression-form').submit(function (event) {
   event.preventDefault();
+  $('#regular-expression-output').html('');
   console.log('SUBMISSION!!!! ' + $('#expression-input').val());
   console.log('Variables CREATED');
   expressionInput = $('#expression-input').val();
@@ -75,4 +80,5 @@ $('#expression-form').submit(function (event) {
   enterData(expressionInput);
   splitData();
   singleLineRegularExpression();
+  appendRegularExpression();
 })
