@@ -71,6 +71,7 @@ let appendRegularExpression = () => {
 }
 
 // there are notes here now to test merge conflicts
+//  there are notes here now again to cause more probles... 
 
 // NOTE: branch merge test
 // This flicks the DOMINOS... STARTS EVERYTHING FALLING OFF
