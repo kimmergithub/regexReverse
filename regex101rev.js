@@ -6,6 +6,8 @@ let regularExpressionOutput = [];
 
 let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
+console.log('we do not need these logs anymore')
+
 // going to have to write a function that turns all the data into a string
 
 let enterData = data => {
