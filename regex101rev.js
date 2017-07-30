@@ -66,12 +66,18 @@ let singleLineRegularExpression = () => {
 
 };
 
-let appendRegularExpression = () => {
-  $('#regular-expression-output').html(regularExpressionOutput)
-}
+let appendRegu
 
-// there are notes here now to test merge conflicts
-//  there are notes here now again to cause more probles... 
+
+
+//larExpression = () => {
+//  $('#regular-expression-output').html(regularExpressionOutput)
+// }
+
+
+// there aredfhio3iu4hriu3 3woih34 034089 jier
+// now to test merge conflicts
+//  there are notes here now again to cause more probles...
 
 // NOTE: branch merge test
 // This flicks the DOMINOS... STARTS EVERYTHING FALLING OFF
