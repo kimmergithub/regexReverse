@@ -70,6 +70,7 @@ let appendRegularExpression = () => {
   $('#regular-expression-output').html(regularExpressionOutput)
 }
 
+// NOTE: branch merge test
 // This flicks the DOMINOS... STARTS EVERYTHING FALLING OFF
 $('#expression-form').submit(function (event) {
   event.preventDefault();
